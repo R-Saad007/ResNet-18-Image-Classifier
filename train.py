@@ -2,7 +2,7 @@ from libraries import *
 from normalize_load_data import train_dataloader
 # we can use the dataloader below for data augmentation
 # from normalize_load_data import data_augment_loader
-from vgg import *
+from resnet18 import *
 
 # Train function
 def train(epochs):
@@ -20,7 +20,7 @@ def train(epochs):
             optimizer.zero_grad()
 
             # forward + backward + optimize
-            outputs = VGG16_net.forward(inputs)
+            outputs = ResNet18_net.forward(inputs)
             outputs = outputs.to(device)
             loss = criterion(outputs, labels)
             loss = loss.to(device)
