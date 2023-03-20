@@ -1,6 +1,6 @@
 from libraries import *
 from normalize_load_data import test_dataloader
-from vgg import *
+from resnet18 import *
 
 # Test function
 def test(save_flag):
@@ -12,7 +12,7 @@ def test(save_flag):
             images, labels = data
             images = images.to(device)
             labels = labels.to(device)
-            outputs = VGG16_net(images)
+            outputs = ResNet18_net(images)
             outputs = outputs.to(device)
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
@@ -26,6 +26,6 @@ def test(save_flag):
     if save_flag:
         # to save the CNN model
         PATH = './cifar_net.pth'
-        torch.save(VGG16_net.state_dict(), PATH)
+        torch.save(ResNet18_net.state_dict(), PATH)
         print('Model Saved')
     return accuracy
