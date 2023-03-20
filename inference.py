@@ -1,6 +1,6 @@
 from libraries import *
 from normalize_load_data import *
-from vgg import VGG16
+from resnet18 import ResNet18
 
 IMG_PATH = './inference_images/images/'
 MODEL_PATH = './cifar_net.pth'
@@ -11,11 +11,10 @@ def inference():
     # list of actual labels
     ground_truth_labels = classes
     # To load saved model
-    VGG = VGG16()
-    VGG.load_state_dict(torch.load(MODEL_PATH))
+    ResNet18.load_state_dict(torch.load(MODEL_PATH))
     # to set dropout and batch normalization layers to evaluation 
-    VGG.eval()
-    VGG = VGG.to(device)
+    ResNet18.eval()
+    ResNet18 = ResNet18.to(device)
     # transformation on images
     data_transforms = transforms.Compose([
     # conversion to tensors
@@ -31,7 +30,7 @@ def inference():
     with torch.no_grad():
         for inputs, labels in dataloader:
             inputs = inputs.to(device)
-            output = VGG(inputs)
+            output = ResNet18(inputs)
             output = output.to(device)
             _, predicted = torch.max(output.data, 1)
             pred_labels.append(predicted)
