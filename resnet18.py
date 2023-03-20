@@ -1,7 +1,7 @@
 from libraries import *
 from torch.optim.lr_scheduler import StepLR
 
-# ResNet18 model
+# ResNet18 (pretrained) model
 ResNet18 = torchvision.models.resnet18(pretrained=True)
 ResNet18 = ResNet18.to(device) 
 
