@@ -1,6 +1,6 @@
 from libraries import *
 from normalize_load_data import *
-from resnet18 import ResNet18
+from resnet18 import model
 
 IMG_PATH = './inference_images/images/'
 MODEL_PATH = './cifar_net.pth'
@@ -11,10 +11,10 @@ def inference():
     # list of actual labels
     ground_truth_labels = classes
     # To load saved model
-    ResNet18.load_state_dict(torch.load(MODEL_PATH))
+    model.load_state_dict(torch.load(MODEL_PATH))
     # to set dropout and batch normalization layers to evaluation 
-    ResNet18.eval()
-    ResNet18 = ResNet18.to(device)
+    model.eval()
+    ResNet18 = model.to(device)
     # transformation on images
     data_transforms = transforms.Compose([
     # conversion to tensors
