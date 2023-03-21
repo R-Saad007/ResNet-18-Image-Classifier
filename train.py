@@ -1,16 +1,17 @@
 from libraries import *
 from normalize_load_data import train_dataloader
 # we can use the dataloader below for data augmentation
-# from normalize_load_data import data_augment_loader
+from normalize_load_data import data_augment_loader
 from resnet18 import *
 
 # Train function
 def train(epochs):
     print("Mini-Batches of 2000 images will be used")
     for epoch in range(1):  # loop over the dataset multiple times
+        ResNet18.train()
         running_loss = 0.0
         epoch_loss = 0.0
-        for i, data in enumerate(train_dataloader, 0):
+        for i, data in enumerate(data_augment_loader, 0):
             # get the inputs; data is a list of [inputs, labels]
             inputs, labels = data
             # making use of GPU
@@ -20,7 +21,7 @@ def train(epochs):
             optimizer.zero_grad()
 
             # forward + backward + optimize
-            outputs = ResNet18_net.forward(inputs)
+            outputs = ResNet18.forward(inputs)
             outputs = outputs.to(device)
             loss = criterion(outputs, labels)
             loss = loss.to(device)
