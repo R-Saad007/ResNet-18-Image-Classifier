@@ -7,12 +7,13 @@ def test(save_flag):
     correct = 0
     accuracy = 0
     total = 0
+    ResNet18.eval()
     with torch.no_grad():
         for data in test_dataloader:
             images, labels = data
             images = images.to(device)
             labels = labels.to(device)
-            outputs = ResNet18_net(images)
+            outputs = ResNet18(images)
             outputs = outputs.to(device)
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
@@ -26,6 +27,6 @@ def test(save_flag):
     if save_flag:
         # to save the CNN model
         PATH = './cifar_net.pth'
-        torch.save(ResNet18_net.state_dict(), PATH)
+        torch.save(ResNet18.state_dict(), PATH)
         print('Model Saved')
     return accuracy
