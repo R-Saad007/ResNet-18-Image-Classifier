@@ -1,7 +1,6 @@
 from libraries import *
 torch.manual_seed(7)
 
-
 # python image matrices have a range of [0,1], hence we normalize them to [-1,1] tensors
 # transform function
 transform = transforms.Compose([
@@ -14,11 +13,12 @@ transform = transforms.Compose([
 
 # transform function for data augmentation
 transform_augmented = transforms.Compose([
+    transforms.RandomCrop(32, padding=4),
+    transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
     transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
-    transforms.CenterCrop(10),
     transforms.GaussianBlur(kernel_size=(5,9),sigma=(0.1,5)),
-    transforms.Resize((32,32))
+    transforms.Resize((32,32)),
 ])
 
 # setting batch size (multiples of 2 i.e. 2,4,8,16,32)
