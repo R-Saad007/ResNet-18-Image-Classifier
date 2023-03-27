@@ -16,7 +16,7 @@ class inference():
         self.data_transforms = self.transform_infer_imgs()
     
     # transformation on images
-    def transform_infer_imgs():
+    def transform_infer_imgs(self):
         data_transforms = transforms.Compose([
         # conversion to tensors
         transforms.ToTensor(),
@@ -25,6 +25,7 @@ class inference():
         # normalizing tensors
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)) # ((mean of 0.5 for R,G,B) (sd of 0.5 for R,G,B)) (ImageNet standard)
         ])
+        return data_transforms
 
     # model
     def model_init(self):
