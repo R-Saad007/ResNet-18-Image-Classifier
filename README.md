@@ -3,7 +3,7 @@
 ### Run driver.py to train the model for a user-defined number of epochs.
 ```python driver.py```
 ### Run inference.py to run inference for images added in the inference_images/images/ directory.
-```python inference.py -img_path 'enter inference images path' -model_path 'enter the saved model's path ' ```
+```python inference.py -img_path 'enter inference images path' -model_path 'enter the saved model's path'```
 ### In our case:
 ### inference_path = './inference_images/images/'
 ### model_path = './cifar_net.pth'
