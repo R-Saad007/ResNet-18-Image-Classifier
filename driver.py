@@ -5,10 +5,10 @@ from graph import graph
 
 # Driver function
 def driver():
-    # list to store accuracies and loss with epochs
+    # list to store accuracies and loss with number of epoch
     acc_list = []
     loss_list = []
-    # flag to save the model
+    # flag to check for last iteration to save the model
     save_flag = False
     # Input from user
     epoch = int(input("Enter number of epochs:\t"))
