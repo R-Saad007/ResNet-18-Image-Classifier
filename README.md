@@ -8,6 +8,7 @@
 #### img_path = './inference_images/images/'
 #### model_path = './cifar_net.pth' (generated after running driver.py)
 ### The model is pre-trained using ImageNet dataset, hence can be used to classify the following 10 classes:
+
 - airplane
 - automobile
 - bird
